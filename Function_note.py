@@ -22,3 +22,69 @@ describe_pet('dog','judy')  #'dog'对应animal_type,'judy'对应pet_name
 # 关键字实参是传递给函数的名称——值对，直接在实参中将形参名和实参值关联起来，关键字实参让你无需考虑函数调用中的实参顺序
 describe_pet(animal_type='cat',pet_name='momo')
 describe_pet(pet_name='feng',animal_type='dog')
+
+# 给形参指定默认值，在调用函数中给形参提供了实参时，Python将使用指定的实参值，否则，将使用形参的默认值
+
+def describe_pet(pet_name,animal_type='dog'): #给animal_type指定为dog
+    print("\nI have a "+animal_type+".")
+    print("My "+animal_type+"'s name is "+pet_name.title()+".")
+describe_pet(pet_name='wille')
+describe_pet('wille')  #如果直接传实参，调用函数时会默认为位置实参
+describe_pet(pet_name='harry',animal_type='hamster') #在函数有默认形参的情况下，可以用关键字实参来描述你想要的内容
+
+def get_formatted_name(first_name,last_name):
+    """"返回整洁的姓名"""
+    full_name = first_name+''+last_name
+    return full_name.title()
+musician = get_formatted_name('jimi','kui')  #将结果返回到调用行
+print(musician)
+
+def get_formatted_name(first_name,last_name,middle_name=''): #让middle_name的实参变成可选的
+    if middle_name:
+        full_name = first_name+''+middle_name+''+last_name
+    else:
+        full_name = first_name+''+last_name
+    return full_name.title()
+
+musician = get_formatted_name('jimi','kui')
+musician = get_formatted_name('jimi','kui','john')
+
+def build_person(first_name,last_name):
+    """"返回字典，该字典包含一个人的信息"""
+    person ={'first':first_name,'last':last_name}
+    return person
+musician = build_person('jimi','hendrix')
+print(musician)
+
+def build_person(first_name,last_name,age=''):
+    """"返回字典，该字典包含一个人的信息"""
+    person ={'first':first_name,'last':last_name}
+    if age:
+        person['age'] = age
+   
+    return person
+musician = build_person('jimi','kui','27')
+print(musician)
+
+# 编写函数的理念是，每个函数只负责一项具体的工作；如果你发现你编写的函数执行的任务过多，请试着把它分解为两个
+#函数，另外，一个函数总是可以调用另外一个函数，有助于将复杂的任务分解为一系列的步骤
+magicians=['john','mike','jacky']
+def show_magicians(magicians):
+    for people in magicians:
+        print(people.title())
+show_magicians(magicians)
+def make_great(magicians,complete_magicians):
+    while magicians:
+        current_magician = 'The Great '+magicians.pop()
+        complete_magicians.append(current_magician)
+def show_magicians(comlete_magicians):
+    for magician in comlete_magicians:
+     print(magician)
+completed_magicians=[]
+"""make_great(magicians,completed_magicians)   
+show_magicians(completed_magicians)
+print(magicians)"""
+
+make_great(magicians[:],completed_magicians) # 切片[:]表示创建列表的副本，不会影响本身的表,一般情况下不适用，只在某些特定场景下用，因为会占用计算机资源
+show_magicians(completed_magicians)
+print(magicians)
