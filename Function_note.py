@@ -88,3 +88,33 @@ print(magicians)"""
 make_great(magicians[:],completed_magicians) # 切片[:]表示创建列表的副本，不会影响本身的表,一般情况下不适用，只在某些特定场景下用，因为会占用计算机资源
 show_magicians(completed_magicians)
 print(magicians)
+
+# 传递任意数量的实参
+def make_pizza(*toppings):  #形参名*toppings中的星号让python创建一个名为toppings的空元组，并将收到的所有值都封装到这个元组中
+    """打印顾客点的所有配料"""
+    print(toppings)
+make_pizza('pepperoni')
+make_pizza('mushrooms','green peppers','extra cheese')
+
+# 结合使用位置实参和任意数量的实参  python会先匹配位置实参和关键字实参，再将余下的实参收集到最后一个形参中
+def make_pizza(size,*toppings):
+    print('\nMaking a '+str(size)+'-inch pizza with the following toppings:')
+    for topping in toppings:
+        print('-'+topping)
+make_pizza(12,'pepperoni')
+make_pizza(16,'mushrooms','green peppers','extra cheese')
+
+# 使用任意数量的关键字实参
+def build_profile(first,last,**user_info):
+    """创建一个字典，其中包含我们知道的有关用户的一切"""
+    profile = {}
+    profile['first_name']=first
+    profile['last_name']=last
+    for key,value in user_info.items():
+        profile[key]=value
+    return profile
+user_profile = build_profile('huang','qian',age=12,location='guangzhou')
+print(user_profile)
+    
+
+    
