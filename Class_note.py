@@ -68,4 +68,11 @@ user2.increment_login_attempts()
 user2.increment_login_attempts()
 user2.reset_login_attempts()
 
+# 继承
+# 如果你要编写的类是现成类的特殊版本，可以使用继承。
+# 一个类继承另一个类时它将自动获得另一个类的所有属性和方法；原有的类称之为父类，而新类称为子类
+# 子类继承了父类所有的属性和方法，同时还可以定义自己的属性和方法
+
+
+
         
