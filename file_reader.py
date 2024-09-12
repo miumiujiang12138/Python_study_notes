@@ -20,15 +20,27 @@ for line in lines:
 with open(file_path) as file_object:
     lines = file_object.readlines()
 pi_string = ''
-for line in lines:
+for line in lines:    
+    line=line.replace('5','1')
     pi_string += line.rstrip()
+print(pi_string)
+birthday = input("Enter your birthday,in the form mmddyy:")
+if birthday in pi_string:
+    print("Your birthday appears in the first thirty digits of pi!")
+else:
+    print("Your birthday do not appears in the first thirty digits of pi.")
 print(pi_string)
 print(len(pi_string))
 pi_string = ''
 for line in lines:
     pi_string += line.strip()  #strip()可以用来消除空格
+
+
 print(pi_string)
 print(len(pi_string))
 
-
+message = 'I really like dogs.'
+message = message.replace('dog','cat')   #字符串是不可变对象，每次对字符串做修改操作时，实
+                                         #际不会修改原始的字符串，需要将修改的字符串重新赋值才能看到被修改的内容
+print(message)
 
