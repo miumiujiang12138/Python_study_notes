@@ -20,14 +20,17 @@ class User():
         self.last_name = last_name
         self.user_info = user_info
     def describe_user(self):
-        profile = {}
+        profile = {
+           # 'first_name' : self.first_name,
+           # 'last_name': self.last_name
+        }
         profile['first_name'] = self.first_name
         profile['last_name'] = self.last_name
         for key,value in self.user_info.items():
             profile[key] = value
         print(profile)
     def greet_user(self):
-        print('\nHello, '+self.first_name+''+self.last_name+'!')
+        print('\nHello, '+self.first_name.title()+' '+self.last_name.title()+'!')
 user1=User('jennie','king',location='Korean',age=27)
 user1.describe_user()
 user1.greet_user()
